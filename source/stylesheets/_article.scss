@@ -1,0 +1,24 @@
+.article {
+  padding: 40px 0;
+  border-bottom: 1px solid #D2D2D2;
+}
+
+.article-title,
+.article-content {
+  margin-left: 235px;
+}
+
+.article-title a {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.article-title a:hover {
+  background-color: #FFDF1F;
+}
+
+.article-content {
+  max-width: 680px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

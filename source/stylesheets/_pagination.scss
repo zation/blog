@@ -1,0 +1,25 @@
+.pagination {
+  @include clearfix;
+  margin-left: 235px;
+}
+
+.pagination li {
+  float: left;
+}
+
+.pagination a,
+.pagination span {
+  display: block;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.pagination span,
+.pagination a:hover {
+  background: #D2D2D2;
+}
+
+.pagination a {
+  background: #EEE;
+}

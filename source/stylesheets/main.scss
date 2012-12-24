@@ -1,0 +1,31 @@
+@import "compass";
+@import "compass/reset";
+@import "font";
+@import "global";
+@import "markdown";
+@import "nav";
+@import "article";
+@import "extro-info";
+@import "pagination";
+
+.main-container {
+  padding: 50px 100px;
+}
+
+.nav-container {
+  @include clearfix;
+}
+
+.logo {
+  @include hide-text;
+  display: block;
+  @include background(image-url("images/strange-native-logo.png"));
+  height: 20px;
+  width: 70px;
+  float: left;
+}
+
+.page-footer {
+  @include background(image-url("images/yellow-shadow.jpg") #FFDF1F repeat-x);
+  padding: 50px 170px;
+}

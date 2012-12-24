@@ -1,0 +1,22 @@
+.nav li {
+  display: inline;
+  margin-left: 50px;
+}
+
+.nav a {
+  font-size: 24px;
+  @include opacity(.5);
+}
+
+.nav a:hover {
+  @include opacity(1);
+}
+
+.page-footer .nav a {
+  color: #E7B418;
+  @include opacity(1);
+}
+
+.page-footer .nav a:hover {
+  color: black;
+}
