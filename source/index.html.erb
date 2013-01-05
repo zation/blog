@@ -1,5 +1,5 @@
 ---
-pageable: true
+pageable: false
 ---
 
 <% page_articles.each do |article| %>
@@ -15,10 +15,10 @@ pageable: true
       <% end %>
     </ul>
     <header class="article-title">
-      <%= link_to article.title, article %>
+      <%= article.title %>
     </header>
     <div class="article-content">
-      <%= article.summary %>
+      <%= article.body %>
     </div>
   </article>
 <% end %>
