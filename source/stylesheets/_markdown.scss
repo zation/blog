@@ -7,8 +7,8 @@
       color: #111111;
       font-weight: 400;
   }
-  h1, h2, h3, h4, h5, p {
-      margin-bottom: 24px;
+  h1, h2, h3, h4, h5, p, pre, ul, ol {
+      margin-bottom: 14px;
       padding: 0;
   }
   h1 {
@@ -16,9 +16,7 @@
   }
   h2 {
       font-size: 26px;
-      /* The bottom margin is small. It's designed to be used with gray meta text
-       * below a post title. */
-      margin: 24px 0 6px;
+      margin-top: 18px;
   }
   h3 {
       font-size: 24px;
@@ -43,8 +41,7 @@
       color: purple;
   }
   ul, ol {
-      padding: 0;
-      margin: 0 0 24px 34px;
+      margin-left: 34px;
   }
   ul {
     list-style-type: disc;
@@ -60,14 +57,32 @@
       line-height: 24px;
   }
   pre {
-      padding: 0px 24px;
       max-width: 800px;
       white-space: pre-wrap;
+      background-color: white;
+      border: 1px solid #CCC;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+  }
+  pre code {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
   }
   code {
       font-family: Consolas, Monaco, Andale Mono, monospace;
       line-height: 1.5;
       font-size: 13px;
+      margin: 0 2px;
+      padding: 1px 5px;
+      border: 1px solid #BBB;
+      background-color: white;
+      border-radius: 3px;
+      vertical-align: middle;
   }
   aside {
       display: block;
