@@ -3,13 +3,32 @@
   border-bottom: 1px solid #D2D2D2;
 }
 
-.article-title,
-.article-content {
-  margin-left: 235px;
+.detail .article-title {
+  margin-left: 0;
+  margin-bottom: 40px;
 }
 
-.article-title {
-  font-size: 32px;
+.detail .article-title h1 {
+  font-size: 58px;
+}
+
+.detail .article-title h2 {
+  font-size: 28px;
+}
+
+.article-title,
+.article-content {
+  margin-left: 180px;
+}
+
+.article-title h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.article-title h2 {
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -18,7 +37,7 @@
 }
 
 .article-content {
-  max-width: 680px;
+  max-width: 650px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

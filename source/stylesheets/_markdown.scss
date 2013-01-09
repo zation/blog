@@ -5,10 +5,10 @@
 
   h1, h2, h3, h4 {
       color: #111111;
-      font-weight: 400;
+      font-weight: bold;
   }
   h1, h2, h3, h4, h5, p, pre, ul, ol {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       padding: 0;
   }
   h1 {
@@ -19,7 +19,8 @@
       margin-top: 18px;
   }
   h3 {
-      font-size: 24px;
+      font-size: 20px;
+      margin-top: 18px;
   }
   h4 {
       font-size: 18px;
@@ -28,17 +29,14 @@
       font-size: 16px;
   }
   a {
-      color: #0099ff;
+      color: #ff6600;
       margin: 0;
       padding: 0;
       vertical-align: baseline;
   }
   a:hover {
       text-decoration: none;
-      color: #ff6600;
-  }
-  a:visited {
-      color: purple;
+      color: #ea5e00;
   }
   ul, ol {
       margin-left: 34px;
@@ -55,9 +53,9 @@
   p, ul, ol {
       font-size: 16px;
       line-height: 24px;
+      text-align: justify;
   }
   pre {
-      max-width: 800px;
       white-space: pre-wrap;
       background-color: white;
       border: 1px solid #CCC;

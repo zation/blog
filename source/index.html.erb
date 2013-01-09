@@ -15,7 +15,12 @@ pageable: false
       <% end %>
     </ul>
     <header class="article-title">
-      <%= article.title %>
+      <h1>
+        <%= link_to article.title, article %>
+      </h1>
+      <% if article.data.subtitle %>
+        <h2>——<%= article.data.subtitle %></h2>
+      <% end %>
     </header>
     <div class="article-content">
       <%= article.body %>
