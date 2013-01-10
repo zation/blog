@@ -9,7 +9,7 @@ activate :blog do |blog|
   # blog.permalink = ":year/:month/:day/:title.html"
   blog.sources = "posts/:year-:month-:day-:title.html"
   # blog.taglink = "tags/:tag.html"
-  blog.layout = "_post"
+  blog.layout = "post"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   # blog.year_link = ":year.html"
@@ -58,6 +58,7 @@ end
 # end
 
 set :markdown_engine, :redcarpet
+set :layout, :layout
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
