@@ -1,6 +1,6 @@
 ---
 title: Sass & Compass Best Practise 1
-subtitle: 代码组织结构
+subtitle: 组织结构
 date: 2013-01-07 16:22 +08:00
 ---
 
@@ -84,6 +84,8 @@ date: 2013-01-07 16:22 +08:00
 	</header>
 
 可能有人会担心这样调试起来会不会很麻烦？但其实如果我们使用Chrome的inspection，我们根本不必接触源代码就可以很好的调试了。
+
+同时，Compass已经提供了丰富的CSS库，其中包括了rese，所以我们可以直接删除`_reset.scss`，只在`screen.scss`中引入就可以了。
 
 ###总结
 
