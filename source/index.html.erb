@@ -16,14 +16,14 @@ pageable: false
     </ul>
     <header class="article-title">
       <h1>
-        <%= link_to article.title, article %>
+        <%= link_to article.title + " &#10143;", article %>
       </h1>
       <% if article.data.subtitle %>
         <h2>——<%= article.data.subtitle %></h2>
       <% end %>
     </header>
     <div class="article-content">
-      <%= article.body %>
+      <%= article.summary %>
     </div>
   </article>
 <% end %>

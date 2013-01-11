@@ -12,7 +12,7 @@ date: 2013-01-07 16:22 +08:00
 * 当sprites修改以后，在代码中需要调试半天background-position才能适应新的sprites；
 * ⋯⋯
 
-当你遇到其中一个或多个问题的时候，说明在CSS代码的管理和维护上出了问题。而这个时候，传统的CSS开发方式已经无法满足这些需求了，我们需要新的开发框架和工具，也就是：[Sass](http://sass-lang.com/)、[Compass](http://compass-style.org/)！
+当你遇到其中一个或多个问题的时候，说明在CSS代码的管理和维护上出了问题。而这个时候，传统的CSS开发方式已经无法满足这些需求了，我们需要新的开发框架和工具，也就是：[Sass](http://sass-lang.com/)、[Compass](http://compass-style.org/)！#READMORE#
 
 关于Sass和Compass的基本用法，阮一峰有两片写的很好的简介：[SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)、[Compass用法指南](http://www.ruanyifeng.com/blog/2012/11/compass.html)。这里就不再赘述了，下面我想介绍一系列我们在使用Sass和Compass方面的最佳实践，本文为第一篇：如何模块化CSS代码，使我们的样式也有一个良好的组织结构。
 
