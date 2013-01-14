@@ -1,0 +1,33 @@
+@import "images/icons/*.png";
+
+.article-content {
+  a[title="sprites-example-blogger"],
+  a[title="sprites-example-flickr"],
+  a[title="sprites-example-linkedin"],
+  a[title="sprites-example-rss"],
+  a[title="sprites-example-twitter"] {
+    @include squish-text();
+    padding: 16px;
+    border-bottom: 0;
+  }
+
+  a[title="sprites-example-blogger"] {
+    @include icons-sprite(blogger);
+  }
+
+  a[title="sprites-example-flickr"] {
+    @include icons-sprite(flickr);
+  }
+
+  a[title="sprites-example-linkedin"] {
+    @include icons-sprite(linkedin);
+  }
+
+  a[title="sprites-example-rss"] {
+    @include icons-sprite(rss);
+  }
+
+  a[title="sprites-example-twitter"] {
+    @include icons-sprite(twitter);
+  }
+}
