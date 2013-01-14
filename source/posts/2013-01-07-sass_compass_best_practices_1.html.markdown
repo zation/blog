@@ -1,5 +1,5 @@
 ---
-title: Sass & Compass Best Practise 1
+title: Sass & Compass Best Practices 1
 subtitle: 组织结构
 date: 2013-01-07 16:22 +08:00
 ---
