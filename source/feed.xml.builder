@@ -10,7 +10,11 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
 
   blog.articles[0..5].each do |article|
     xml.entry do
-      xml.title article.title + "——" + article.data.subtitle
+      if article.data.subtitle
+        xml.title article.title + "——" + article.data.subtitle
+      else
+        xml.title article.title
+      end
       xml.link "rel" => "alternate", "href" => article.url
       xml.id article.url
       xml.published article.date.to_time.iso8601

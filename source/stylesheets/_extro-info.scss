@@ -1,20 +1,20 @@
 .extro-info {
   float: left;
   margin-top: 5px;
-}
 
-.date,
-.tag {
-  padding-left: 25px;
-  @include opacity(.5);
-  margin: 5px 0;
-}
+  .date,
+  .tag {
+    padding-left: 25px;
+    @include opacity(.5);
+    margin: 5px 0;
+  }
 
-.date {
-  @include background(image-url("images/cal-ico.png") no-repeat);
-  margin-bottom: 20px;
-}
+  .date {
+    @include background(image-url("images/cal-ico.png") no-repeat);
+    margin-bottom: 20px;
+  }
 
-.tag {
-  @include background(image-url("images/tag-ico.png") no-repeat);
+  .tag {
+    @include background(image-url("images/tag-ico.png") no-repeat);
+  }
 }
