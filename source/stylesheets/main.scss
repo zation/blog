@@ -1,6 +1,8 @@
 @import "compass";
 @import "compass/reset";
 
+@import "font-icons/main";
+
 @import "images/sprites/*.png";
 
 @import "global";
@@ -12,6 +14,7 @@
 @import "icons-showcase";
 @import "prettify";
 @import "comment";
+@import "social";
 
 .main-container {
   padding: 50px 100px;
