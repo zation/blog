@@ -12,6 +12,10 @@
   font-size: 58px;
 }
 
+.summary .article-title h1:after {
+  content: "\279F";
+}
+
 .detail .article-title h2 {
   font-size: 28px;
 }

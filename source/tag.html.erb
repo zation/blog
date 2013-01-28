@@ -13,6 +13,11 @@ pageable: false
           <a href="<%= tag_path tag %>"><%= tag %></a>
         </li>
       <% end %>
+      <li class="comment">
+        <a class="ds-thread-count"
+          data-thread-key="<%= article.slug %>"
+          href="<%= article.url %>#comment"></a>
+      </li>
     </ul>
     <header class="article-title">
       <h1>

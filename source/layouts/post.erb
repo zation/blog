@@ -10,7 +10,7 @@
     </header>
     <ul class="extro-info">
       <li class="date">
-        <%= current_article.date.strftime('%h %d, %Y ') %>
+        <%= current_article.date.to_s(:my_format) %>
       </li>
       <% current_article.tags.each do |tag| %>
         <li class="tag">
@@ -25,7 +25,7 @@
     </ul>
     
     <div class="article-content">
-      <%= yield %>
+      <%= current_article.body %>
     </div>
   </article>
   <div id="comment">

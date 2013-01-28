@@ -23,11 +23,11 @@ Sprites本身在Web开发中就是一个最佳实践，但是他也会带来一�
 
 首先我们准备一些图标：
 
-* ![blogger](../stylesheets/images/icons/blogger.png "blogger") images/icons/blogger.png
-* ![flickr](../stylesheets/images/icons/flickr.png "flickr") images/icons/flickr.png
-* ![linkedin](../stylesheets/images/icons/linkedin.png "linkedin") images/icons/linkedin.png
-* ![rss](../stylesheets/images/icons/rss.png "rss") images/icons/rss.png
-* ![twitter](../stylesheets/images/icons/twitter.png "twitter") images/icons/twitter.png
+* ![blogger](../stylesheets/images/icons-showcase/blogger.png "blogger") images/icons/blogger.png
+* ![flickr](../stylesheets/images/icons-showcase/flickr.png "flickr") images/icons/flickr.png
+* ![linkedin](../stylesheets/images/icons-showcase/linkedin.png "linkedin") images/icons/linkedin.png
+* ![rss](../stylesheets/images/icons-showcase/rss.png "rss") images/icons/rss.png
+* ![twitter](../stylesheets/images/icons-showcase/twitter.png "twitter") images/icons/twitter.png
 
 将他们放在images/icons中：
 
