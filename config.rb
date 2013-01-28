@@ -4,7 +4,7 @@
 
 # Time.zone = "UTC"
 
-Time::DATE_FORMATS[:my_format] = "%Y年 %m月 %d号"
+Time::DATE_FORMATS[:my_format] = "%Y. %m. %d"
 
 activate :blog do |blog|
   # blog.prefix = "blog"

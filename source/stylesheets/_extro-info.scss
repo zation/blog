@@ -6,13 +6,26 @@
   .tag,
   .comment {
     padding-left: 25px;
-    @include opacity(.5);
     margin: 5px 0;
+  }
+
+  a {
+    @include opacity(.5);
+  }
+
+  .active {
+    @include opacity(1);
+  }
+
+  a:hover {
+    @include opacity(1);
   }
 
   .date {
     @include sprites-sprite(calendar);
     margin-bottom: 20px;
+    line-height: 18px;
+    @include opacity(.5);
   }
 
   .tag {

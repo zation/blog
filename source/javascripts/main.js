@@ -7,4 +7,11 @@ $(function() {
   $('.article-content code, .article-content pre').addClass('prettyprint');
   $('.article-content pre').addClass('linenums');
   prettyPrint();
+
+  if($('.about').length > 0) {
+    $('.about-link').addClass('active');
+  }
+  else {
+    $('.blog-link').addClass('active');
+  }
 });

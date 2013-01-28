@@ -4,17 +4,30 @@
 }
 
 .nav a {
+  line-height: 30px;
   font-size: 24px;
   @include opacity(.5);
+}
+
+.nav a.active {
+  @include opacity(1);
 }
 
 .nav a:hover {
   @include opacity(1);
 }
 
+.page-footer .nav {
+  float: left;
+}
+
 .page-footer .nav a {
   color: #E7B418;
   @include opacity(1);
+}
+
+.page-footer .nav a.active {
+  color: black;
 }
 
 .page-footer .nav a:hover {

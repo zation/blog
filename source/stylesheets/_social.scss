@@ -3,8 +3,9 @@
 }
 
 .social-links li {
-  float: left;
+  float: right;
   margin: 0 10px;
+  @include single-transition(all, .25s, linear);
 }
 
 .social-links li a {

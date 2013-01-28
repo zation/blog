@@ -1,9 +1,10 @@
 ---
 pageable: false
+type: summary
 ---
 
 <% blog.articles.each do |article| %>
-  <article class="article summary">
+  <article class="article">
     <ul class="extro-info">
       <li class="date">
         <%= article.date.to_s(:my_format) %>
