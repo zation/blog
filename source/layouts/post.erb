@@ -12,16 +12,23 @@
       <li class="date">
         <%= current_article.date.strftime('%h %d, %Y ') %>
       </li>
-      <% current_article.tags.each do |tag, articles| %>
+      <% current_article.tags.each do |tag| %>
         <li class="tag">
           <a href="<%= tag_path tag %>"><%= tag %></a>
         </li>
       <% end %>
+      <li class="comment">
+        <a class="ds-thread-count"
+          data-thread-key="<%= current_article.slug %>"
+          href="#comment"></a>
+      </li>
     </ul>
     
     <div class="article-content">
       <%= yield %>
     </div>
   </article>
-  <div class="ds-thread"></div>
+  <div id="comment">
+    <div class="ds-thread" data-thread-key="<%= current_article.slug %>"></div>
+  </div>
 <% end %>

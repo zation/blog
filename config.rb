@@ -4,6 +4,11 @@
 
 # Time.zone = "UTC"
 
+# Date::ABBR_DAYNAMES = %w(日 一 二 三 四 五 六)
+# Date::DAYNAMES = %w(星期日 星期一 星期二 星期三 星期四 星期五 星期六)
+# Date::ABBR_MONTHNAMES = %w(nil 1月 2月 3月 4月 5月 6月 7月 8月 9月 10月 11月 12月)
+# Date::MONTHNAMES = %w(nil 一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月)
+
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"
@@ -59,7 +64,6 @@ end
 # end
 
 set :markdown_engine, :redcarpet
-set :layout, :layout
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do

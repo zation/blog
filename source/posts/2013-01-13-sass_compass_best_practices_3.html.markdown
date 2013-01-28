@@ -2,6 +2,7 @@
 title: Sass & Compass Best Practices 3
 subtitle: 图片处理
 date: 2013-01-13 21:15 +08:00
+tags: CSS, Compass, SASS
 ---
 
 [前一篇文章](/2013/01/09/sass_compass_best_practices_2.html)中我们介绍了如何利用Sass来简化我们的代码，使我们的代码可复用且易维护。本文讲介绍如何使用Compass来管理我们用于样式的图片。

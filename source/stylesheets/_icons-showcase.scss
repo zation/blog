@@ -1,4 +1,4 @@
-@import "images/icons/*.png";
+@import "images/icons-showcase/*.png";
 
 .article-content {
   a[title="sprites-example-blogger"],
@@ -12,22 +12,22 @@
   }
 
   a[title="sprites-example-blogger"] {
-    @include icons-sprite(blogger);
+    @include icons-showcase-sprite(blogger);
   }
 
   a[title="sprites-example-flickr"] {
-    @include icons-sprite(flickr);
+    @include icons-showcase-sprite(flickr);
   }
 
   a[title="sprites-example-linkedin"] {
-    @include icons-sprite(linkedin);
+    @include icons-showcase-sprite(linkedin);
   }
 
   a[title="sprites-example-rss"] {
-    @include icons-sprite(rss);
+    @include icons-showcase-sprite(rss);
   }
 
   a[title="sprites-example-twitter"] {
-    @include icons-sprite(twitter);
+    @include icons-showcase-sprite(twitter);
   }
 }

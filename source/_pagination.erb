@@ -1,0 +1,25 @@
+<% if paginate %>
+  <ul class="pagination">
+  <% if prev_page %>
+    <li><%= link_to '<<', prev_page %></li>
+  <% end %>
+  <% (1..num_pages).each do |number| %>
+    <% if number == page_number %>
+      <li>
+        <span><%= number %></span>
+      </li>
+    <% elsif number == 1 %>
+      <li>
+        <a href="/"><%= number %></a>
+      </li>
+    <% else %>
+      <li>
+        <a href="<%= '/page/' + number.to_s + '/' %>"><%= number %></a>
+      </li>
+    <% end %>
+  <% end %>
+  <% if next_page %>
+    <li><%= link_to '>>', next_page %></li>
+  <% end %>
+  </ul>
+<% end %>

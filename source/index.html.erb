@@ -8,11 +8,16 @@ pageable: false
       <li class="date">
         <%= article.date.strftime('%h %d, %Y ') %>
       </li>
-      <% article.tags.each do |tag, articles| %>
+      <% article.tags.each do |tag| %>
         <li class="tag">
           <a href="<%= tag_path tag %>"><%= tag %></a>
         </li>
       <% end %>
+      <li class="comment">
+        <a class="ds-thread-count"
+          data-thread-key="<%= article.slug %>"
+          href="<%= article.url %>#comment"></a>
+      </li>
     </ul>
     <header class="article-title">
       <h1>
@@ -28,28 +33,4 @@ pageable: false
   </article>
 <% end %>
 
-<% if paginate %>
-  <ul class="pagination">
-  <% if prev_page %>
-    <li><%= link_to '<<', prev_page %></li>
-  <% end %>
-  <% (1..num_pages).each do |number| %>
-    <% if number == page_number %>
-      <li>
-        <span><%= number %></span>
-      </li>
-    <% elsif number == 1 %>
-      <li>
-        <a href="/"><%= number %></a>
-      </li>
-    <% else %>
-      <li>
-        <a href="<%= '/page/' + number.to_s + '/' %>"><%= number %></a>
-      </li>
-    <% end %>
-  <% end %>
-  <% if next_page %>
-    <li><%= link_to '>>', next_page %></li>
-  <% end %>
-  </ul>
-<% end %>
+<%= partial "pagination" %>
