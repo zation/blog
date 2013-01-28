@@ -1,0 +1,20 @@
+.avatar {
+  float: left;
+  border: 3px white solid;
+  box-shadow: 0 2px 4px #ccc;
+}
+
+.about {
+  article {
+    @include clearfix;
+    margin: 20px 20px 20px 180px;
+    font-size: 18px;
+
+    p {
+      max-width: 600px;
+      text-align: justify;
+      margin: 20px;
+      padding-left: 210px;
+    }
+  }
+}
