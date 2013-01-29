@@ -116,7 +116,14 @@
     font-weight: bold;
   }
   img {
-    // vertical-align: middle;
+    border: 3px solid white;
+    box-shadow: 0 2px 2px #ccc;
+    background: white;
+  }
+  img[alt="2012"] {
+    border: 0;
+    box-shadow: none;
+    background: none;
   }
   
   /* Code below this line is copyright Twitter Inc. */

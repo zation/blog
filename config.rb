@@ -9,7 +9,7 @@ Time::DATE_FORMATS[:my_format] = "%Y. %m. %d"
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"
-  blog.sources = "posts/:year-:month-:day-:title.html"
+  blog.sources = "posts/:title.html"
   # blog.taglink = "tags/:tag.html"
   blog.layout = "post"
   blog.summary_separator = /(#READMORE#)/
@@ -72,7 +72,7 @@ set :markdown_engine, :redcarpet
 ###
 
 # Automatic image dimensions on image_tag helper
-activate :automatic_image_sizes
+# activate :automatic_image_sizes
 
 # Methods defined in the helpers block are available in templates
 # helpers do
