@@ -7,7 +7,7 @@ type: tag
   <article class="article">
     <ul class="extro-info">
       <li class="date">
-        <%= article.date.strftime('%h %d, %Y ') %>
+        <%= article.date.to_s(:my_format) %>
       </li>
       <% article.tags.each do |tag, articles| %>
         <li class="tag">

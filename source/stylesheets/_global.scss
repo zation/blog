@@ -9,5 +9,4 @@ a, body {
 
 a {
   text-decoration: none;
-  @include single-transition(all, .25s, linear);
 }

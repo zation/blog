@@ -1,7 +1,7 @@
 @import "compass";
 @import "compass/reset";
 
-@import "font-icons/main";
+@import "icons";
 
 @import "images/sprites/*.png";
 
@@ -14,15 +14,11 @@
 @import "icons-showcase";
 @import "prettify";
 @import "comment";
-@import "social";
+@import "tools/main";
 @import "about";
 
 .main-container {
   padding: 50px 100px;
-}
-
-.nav-container {
-  @include clearfix;
 }
 
 .logo {

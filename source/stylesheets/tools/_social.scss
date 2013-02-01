@@ -1,0 +1,64 @@
+.social-links.striction {
+  padding: 0 16px;
+}
+
+.social-links.striction li {
+  margin: 0 -16px;
+  @include opacity(0);
+}
+
+.social-links {
+  float: right;
+  @include clearfix;
+  margin-top: 10px;
+}
+
+.page-footer .social-links li {
+  color: #E7B418;
+}
+
+.social-links li {
+  @include transition(color .25s, margin .4s linear, opacity .4s linear);
+  float: right;
+  margin: 0 8px;
+  width: 32px;
+  line-height: 32px;
+  font-size: 24px;
+  color: #999;
+  text-align: center;
+  font-family: 'icons';
+  position: relative;
+}
+
+.social-links li:hover {
+  color: #111;
+}
+
+.social-links li a {
+  @include hide-text;
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.google-plus:before {
+  content: "\2b";
+}
+
+.weibo:before {
+  content: "\4a";
+}
+
+.rss:before {
+  content: "\52";
+}
+
+.facebook:before {
+  content: "\66";
+}
+
+.github:before {
+  content: "\f113";
+}

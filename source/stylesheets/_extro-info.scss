@@ -10,22 +10,23 @@
   }
 
   a {
-    @include opacity(.5);
+    @include transition(color, .25s);
+    color: #999;
   }
 
   .active {
-    @include opacity(1);
+    color: #111;
   }
 
   a:hover {
-    @include opacity(1);
+    color: #111;
   }
 
   .date {
     @include sprites-sprite(calendar);
     margin-bottom: 20px;
     line-height: 18px;
-    @include opacity(.5);
+    color: #999;
   }
 
   .tag {

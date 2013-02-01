@@ -36,6 +36,10 @@
   font-weight: bold;
 }
 
+.article-title a {
+  @include transition(background-color .25s)
+}
+
 .article-title a:hover {
   background-color: #FFDF1F;
 }

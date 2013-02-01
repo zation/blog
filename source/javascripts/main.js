@@ -14,4 +14,12 @@ $(function() {
   else {
     $('.blog-link').addClass('active');
   }
+
+  $('.search').on('focus', function() {
+    $('.search-container').addClass('active');
+    $('.social-links').addClass('striction');
+  }).on('blur', function() {
+    $('.search-container').removeClass('active');
+    $('.social-links').removeClass('striction');
+  });
 });
