@@ -1,7 +1,6 @@
 //= require "_jquery-1.8.3.min"
 //= require "_prettify"
 //= require "_articles"
-
 $(function() {
   $('.article-content a').attr('target', '_blank');
 
@@ -27,12 +26,23 @@ $(function() {
     }, 100);
   });
 
+  function isTagsMacth(tags, searchValue) {
+    var isMatch = false;
+    $.each(tags, function() {
+      if(this.toLowerCase().indexOf(searchValue) >= 0) {
+        isMatch = true;
+        return;
+      }
+    });
+    return isMatch;
+  }
+
   $('.search').on('keydown, keyup', function() {
     $('.search-result').html('');
     var searchValue = $('.search').val().toLowerCase();
     if(searchValue !== '') {
       $.each(articles, function() {
-        if(this.title.toLowerCase().indexOf(searchValue) >= 0) {
+        if(this.title.toLowerCase().indexOf(searchValue) >= 0 || isTagsMacth(this.tags, searchValue)) {
           var item = $('<li><a href="' + this.link + '">' + this.title + '</a></li>');
           $('.search-result').append(item);
         }
