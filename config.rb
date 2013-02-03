@@ -38,6 +38,8 @@ page "/sitemap.xml", :layout => false
 # First: gem install susy
 # require 'susy'
 
+require 'animation'
+
 # Change Compass configuration
 compass_config do |config|
   config.images_dir = 'stylesheets'

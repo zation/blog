@@ -1,6 +1,7 @@
 //= require "_jquery-1.8.3.min"
 //= require "_prettify"
 //= require "_articles"
+
 $(function() {
   $('.article-content a').attr('target', '_blank');
 
