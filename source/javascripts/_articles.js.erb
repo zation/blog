@@ -1,0 +1,13 @@
+<%# encoding: utf-8 %>
+var articles = [
+<% blog.articles.each_with_index do |article, index| %>
+  {
+    title: "<%= article.title %>",
+    link: "<%= article.url %>",
+    tag: <%= article.tags %>
+  }
+  <% if index != blog.articles.size - 1 %>
+  ,
+  <% end %>
+<% end %>
+];
