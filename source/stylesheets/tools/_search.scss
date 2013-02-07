@@ -106,7 +106,7 @@
   top: 24px;
   right: 2px;
   @include rotate(-45deg);
-  @include transform-origin(50% 0% 0);
+  @include transform-origin(50%, 0);
   @include animation(qualifier-shaking 6s infinite);
 }
 

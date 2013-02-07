@@ -7,16 +7,13 @@
 @import "images/sprites/*.png";
 
 @import "global";
-@import "markdown";
 @import "nav";
-@import "article";
 @import "extro-info";
 @import "pagination";
-@import "icons-showcase";
-@import "prettify";
 @import "comment";
 @import "tools/main";
 @import "about";
+@import "article/main";
 
 .main-container {
   padding: 50px 100px;
