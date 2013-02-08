@@ -10,6 +10,9 @@
 
   <%= stylesheet_link_tag "main" %>
   <%= favicon_tag 'favicon.png' %>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "html5shiv-printshiv" %>
+  <![endif]-->
 </head>
 
 <body class="<%= is_blog_article? ? "detail" : current_page.data.type %>">

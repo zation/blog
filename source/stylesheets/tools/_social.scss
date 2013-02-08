@@ -28,6 +28,7 @@
   text-align: center;
   font-family: 'icons';
   position: relative;
+  cursor: pointer;
 }
 
 .social-links li:hover {
@@ -41,6 +42,7 @@
   position: absolute;
   top: 0;
   z-index: 1;
+  background: url(fackimage.jpg)\9;
 }
 
 .google-plus:before {
