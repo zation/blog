@@ -18,7 +18,7 @@ tags: grunt, bower
 * 增加了前端开发者的学习和使用成本；
 * ⋯⋯
 
-于是现在出现了一些不依赖于后端代码（虽然还是要依赖Node.js⋯⋯）的管理工具，对于前端开发者非常友好，例如：[YEMAN](http://yeoman.io/)、[Jam](http://jamjs.org/)、[volo](http://volojs.org/)、[component](https://github.com/component/component)、[Brunch](http://brunch.io/)⋯⋯但是这些工具都或多或少有自己的一些问题，所以我决定用一些更轻量的工具（[bower](http://twitter.github.com/bower/)、[grunt](http://gruntjs.com/)）来搭建自己的前端开发流程。 #READMORE#
+于是现在出现了一些不依赖于后端代码（虽然还是要依赖Node.js⋯⋯）的管理工具，对于前端开发者非常友好，例如：[YEMAN](http://yeoman.io/)、[Jam](http://jamjs.org/)、[volo](http://volojs.org/)、[component](https://github.com/component/component)、[Brunch](http://brunch.io/)⋯⋯但是这些工具都或多或少有自己的一些问题，所以我决定用一些更轻量的工具（[bower](http://twitter.github.com/bower/)、[grunt](http://gruntjs.com/)）来搭建自己的前端开发流程。本文的例子来自本人正在开发的一个项目，可以在github上查看[所有的代码](https://github.com/zation/flyingtortoise)。 #READMORE#
 
 ###什么是开发流程？
 
