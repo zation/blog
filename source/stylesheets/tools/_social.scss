@@ -11,6 +11,27 @@
   float: right;
   @include clearfix;
   margin-top: 10px;
+
+
+  .google-plus:before {
+    content: "\2b";
+  }
+
+  .weibo:before {
+    content: "\4a";
+  }
+
+  .rss:before {
+    content: "\52";
+  }
+
+  .facebook:before {
+    content: "\66";
+  }
+
+  .github:before {
+    content: "\f113";
+  }
 }
 
 .page-footer .social-links li {
@@ -43,24 +64,4 @@
   top: 0;
   z-index: 1;
   background: url(fackimage.jpg)\9;
-}
-
-.google-plus:before {
-  content: "\2b";
-}
-
-.weibo:before {
-  content: "\4a";
-}
-
-.rss:before {
-  content: "\52";
-}
-
-.facebook:before {
-  content: "\66";
-}
-
-.github:before {
-  content: "\f113";
 }

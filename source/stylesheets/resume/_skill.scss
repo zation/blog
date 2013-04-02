@@ -1,0 +1,114 @@
+$skill-javascript: #18BDF6;
+$skill-process: #88CD2A;
+$skill-css: #F69446;
+
+
+.skill-bar {
+  @include clearfix;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.skill-bar:last-child {
+  margin-bottom: 0;
+}
+
+.skill-title {
+  width: 100px;
+  border: 1px solid;
+  float: left;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.skill-items {
+  float: left;
+  color: white;
+}
+
+.skill-items li {
+  float: left;
+  padding: 11px;
+  box-sizing: border-box;
+}
+
+.javascript {
+  .skill-title {
+    border-color: $skill-javascript;
+  }
+
+  .skill-items {
+    width: 500px;
+
+    li:nth-child(1) {
+      background: $skill-javascript;
+      width: 30%;
+    }
+
+    li:nth-child(2) {
+      background: lighten($skill-javascript, 5%);
+      width: 20%;
+    }
+
+    li:nth-child(3) {
+      background: lighten($skill-javascript, 10%);
+      width: 30%;
+    }
+
+    li:nth-child(4) {
+      background: lighten($skill-javascript, 15%);
+      width: 20%;
+    }
+  }
+}
+
+.css {
+  .skill-title {
+    border-color: $skill-css;
+  }
+
+  .skill-items {
+    width: 400px;
+
+    li:nth-child(1) {
+      background: $skill-css;
+      width: 30%;
+    }
+
+    li:nth-child(2) {
+      background: lighten($skill-css, 5%);
+      width: 40%;
+    }
+
+    li:nth-child(3) {
+      background: lighten($skill-css, 10%);
+      width: 30%;
+    }
+  }
+}
+
+.process {
+  .skill-title {
+    border-color: $skill-process;
+  }
+
+  .skill-items {
+    width: 350px;
+
+    li:nth-child(1) {
+      background: $skill-process;
+      width: 35%;
+    }
+
+    li:nth-child(2) {
+      background: lighten($skill-process, 5%);
+      width: 35%;
+    }
+
+    li:nth-child(3) {
+      background: lighten($skill-process, 10%);
+      width: 30%;
+    }
+  }
+}

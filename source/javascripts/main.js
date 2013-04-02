@@ -14,7 +14,8 @@ $(function() {
     $('.blog-link').addClass('active');
   }
 
-  $('.search').on('focus', function() {
+  var $search = $('.search');
+  $search.on('focus', function() {
     $('.search-container').addClass('active');
     $('.social-links').addClass('striction');
   }).on('blur', function() {
@@ -37,7 +38,7 @@ $(function() {
     return isMatch;
   }
 
-  $('.search').on('keydown, keyup', function() {
+  $search.on('keydown, keyup', function() {
     $('.search-result').html('');
     var searchValue = $('.search').val().toLowerCase();
     if(searchValue !== '') {

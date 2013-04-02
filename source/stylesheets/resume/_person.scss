@@ -1,0 +1,26 @@
+.person-info-list {
+  @include clearfix;
+}
+
+.person-info-list li {
+  float: left;
+  margin-right: 25px;
+  padding-right: 65px;
+  border-right: 1px solid #DEDEDE;
+}
+
+.person-info-list li:last-child {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.person-info-list a {
+  color: $grey;
+}
+
+.person-info-title {
+  display: block;
+  margin-bottom: 5px;
+  color: $green;
+}

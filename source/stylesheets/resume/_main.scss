@@ -1,0 +1,91 @@
+$dark-green: #90C4C0;
+$green: #9DCCCD;
+$grey: #696969;
+
+.resume article {
+  color: $grey;
+  width: 800px;
+  background: white;
+  box-shadow: 0 2px 6px 0 #CCC;
+  padding: 40px 20px;
+  margin: 20px auto;
+  border: 1px solid #DDD;
+}
+
+.generate-info {
+  color: $dark-green;
+  text-align: right;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: $green;
+  font-weight: lighter;
+  font-size: 18px;
+  display: block;
+}
+
+.detail-info {
+  margin-bottom: 30px;
+}
+
+.detail-info-title {
+  line-height: 32px;
+  padding-left: 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.detail-info-content {
+  margin-left: 40px;
+  border-top: 2px dotted #CECECE;
+  border-bottom: 2px dotted #CECECE;
+  padding: 10px 0;
+  @include clearfix;
+}
+
+.person .detail-info-title {
+  @include sprites-sprite(info);
+}
+
+.skills .detail-info-title {
+  @include sprites-sprite(skill);
+}
+
+.work .detail-info-title {
+  @include sprites-sprite(work);
+}
+
+.education .detail-info-title {
+  @include sprites-sprite(education);
+}
+
+.open-source .detail-info-title {
+  @include sprites-sprite(github);
+}
+
+.primary-enhance {
+  font-size: 24px;
+  color: $green;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.enhance {
+  font-size: 14px;
+  color: $green;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.reduce {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+@import "person";
+@import "skill";
+@import "work";
+@import "open-source";
