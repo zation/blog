@@ -1,9 +1,12 @@
-$dark-green: #90C4C0;
-$green: #9DCCCD;
-$grey: #696969;
+$primary-color: #90C4C0;
+$sub-color: #9DCCCD;
+
+.resume article,
+.resume article a {
+  color: #696969;
+}
 
 .resume article {
-  color: $grey;
   width: 800px;
   background: white;
   box-shadow: 0 2px 6px 0 #CCC;
@@ -13,14 +16,14 @@ $grey: #696969;
 }
 
 .generate-info {
-  color: $dark-green;
+  color: $primary-color;
   text-align: right;
   font-size: 60px;
   font-weight: bold;
 }
 
 .subtitle {
-  color: $green;
+  color: $sub-color;
   font-weight: lighter;
   font-size: 18px;
   display: block;
@@ -65,16 +68,16 @@ $grey: #696969;
   @include sprites-sprite(github);
 }
 
-.primary-enhance {
+.resume .primary-enhance {
   font-size: 24px;
-  color: $green;
+  color: $primary-color;
   margin-bottom: 5px;
   display: block;
 }
 
 .enhance {
   font-size: 14px;
-  color: $green;
+  color: $sub-color;
   margin-bottom: 10px;
   display: block;
 }
