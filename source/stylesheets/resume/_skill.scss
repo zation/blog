@@ -1,6 +1,6 @@
-$skill-javascript: #18BDF6;
-$skill-process: #88CD2A;
-$skill-css: #F69446;
+$skill-javascript: #F4E298;
+$skill-process: #F4E298;
+$skill-css: #F4E298;
 
 
 .skill-bar {
@@ -24,7 +24,6 @@ $skill-css: #F69446;
 
 .skill-items {
   float: left;
-  color: white;
 }
 
 .skill-items li {
@@ -39,7 +38,7 @@ $skill-css: #F69446;
   }
 
   .skill-items {
-    width: 500px;
+    width: 600px;
 
     li:nth-child(1) {
       background: $skill-javascript;
@@ -69,7 +68,7 @@ $skill-css: #F69446;
   }
 
   .skill-items {
-    width: 400px;
+    width: 500px;
 
     li:nth-child(1) {
       background: $skill-css;
@@ -94,21 +93,21 @@ $skill-css: #F69446;
   }
 
   .skill-items {
-    width: 350px;
+    width: 400px;
 
     li:nth-child(1) {
       background: $skill-process;
-      width: 35%;
+      width: 30%;
     }
 
     li:nth-child(2) {
       background: lighten($skill-process, 5%);
-      width: 35%;
+      width: 45%;
     }
 
     li:nth-child(3) {
       background: lighten($skill-process, 10%);
-      width: 30%;
+      width: 25%;
     }
   }
 }
