@@ -8,8 +8,10 @@ $(function() {
   $('.article-content pre').addClass('linenums');
   prettyPrint();
 
-  if($('.about').length > 0) {
+  if ($('.about').length > 0) {
     $('.about-link').addClass('active');
+  } else if ($('.resume').length > 0) {
+    $('.resume-link').addClass('active');
   } else {
     $('.blog-link').addClass('active');
   }
@@ -30,7 +32,7 @@ $(function() {
   function isTagsMacth(tags, searchValue) {
     var isMatch = false;
     $.each(tags, function() {
-      if(this.toLowerCase().indexOf(searchValue) >= 0) {
+      if (this.toLowerCase().indexOf(searchValue) >= 0) {
         isMatch = true;
         return;
       }
@@ -41,9 +43,9 @@ $(function() {
   $search.on('keydown, keyup', function() {
     $('.search-result').html('');
     var searchValue = $('.search').val().toLowerCase();
-    if(searchValue !== '') {
+    if (searchValue !== '') {
       $.each(articles, function() {
-        if(this.title.toLowerCase().indexOf(searchValue) >= 0 || isTagsMacth(this.tags, searchValue)) {
+        if (this.title.toLowerCase().indexOf(searchValue) >= 0 || isTagsMacth(this.tags, searchValue)) {
           var item = $('<li><a href="' + this.link + '">' + this.title + '</a></li>');
           $('.search-result').append(item);
         }
