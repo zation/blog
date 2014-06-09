@@ -6,7 +6,7 @@ tags: Mobile, HTML5, AppCache
 
 ![HTML5](appcache/html5.png "HTML5")
 
-最近公司举办技术大赛，我和同事一起制作了一个叫做[10K Hours](http://10khours.me)的Mobile Web App，可以帮助你通过一万小时的努力，成为某个领域的专家。正好前段时间翻译了一本书[《HTML5 Mobile Development Cookbook》](http://book.douban.com/subject/10580867/)，中文译本[在此](http://book.douban.com/subject/24706036/)。其中讲到了不少移动端Web开发的Best Practices，正好就用到了10K Hours这个应用上。其中我觉得非常有用但是又让人头痛的一个功能就是AppCache：它可以让用户在访问一次网页以后，下次再来时不能访问网络的情况下，也可以使用这个Web App；但是当页面资源被缓存以后，非常难去更新它们⋯⋯下面就是App Cache的详细介绍和使用技巧： #READMORE#
+最近公司举办技术大赛，我和同事一起制作了一个叫做[10K Hours](http://10khours.me)的Mobile Web App，可以帮助你通过一万小时的努力，成为某个领域的专家。正好前段时间翻译了一本书[《HTML5 Mobile Development Cookbook》](http://book.douban.com/subject/10580867/)，中文译本[在此](http://book.douban.com/subject/24706036/)。其中讲到了不少移动端Web开发的Best Practices，正好就用到了10K Hours这个应用上。其中我觉得非常有用但是又让人头痛的一个功能就是AppCache：它可以让用户在访问一次网页以后，下次再来时不能访问网络的情况下，也可以使用这个Web App；但是当页面资源被缓存以后，非常难去更新它们⋯⋯下面就是App Cache的详细介绍和使用技巧#READMORE#：
 
 ### 什么是AppCache
 

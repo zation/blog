@@ -1,5 +1,5 @@
 ---
-title: 国内项目天坑记
+title: 国内项目天坑记（一）
 subtitle: 大型官方网站中的前端选型
 date: 2014-06-05 21:08 +08:00
 tags: Backbone.js
@@ -7,7 +7,7 @@ tags: Backbone.js
 
 一年多的时间没有写博客了，这段时间一直在加班加点的赶一个国内官方网站项目，基本12*6的工作时间让博客荒废了这么久，现在终于有些时间总结整理一下这个项目中的一些坑和经验。之所以叫做天坑记而不是填坑记，是因为该坑连绵不绝，是一个堪称有生之年的坑……
 
-项目开始的初期，面临着很多许多技术选型，选的好可以让后面的开发事半功倍，选的不好……就只能自己埋的坑自己填了。
+项目开始的初期，面临着很多许多技术选型，选的好可以让后面的开发事半功倍，选的不好……就只能自己埋的坑自己填了。#READMORE#
 
 ### 选型的注意事项
 
@@ -36,100 +36,74 @@ tags: Backbone.js
 * 官网网站的访问量很大，同时国内的带宽有限，需要选择体积较小的框架。
 * 出于ThoughtWorks的传统，我们需要选择一个利于自动化和测试的框架。
 
-根据上面的要求以及我们团队成员的已有技能，我们选择了下面的架构：
+根据上面的要求，我们确定我们需要以下类型的架构：
 
-* JS MVC: Backbone.js。在比较过Angular.js, Ember.js等框架以后，选择了小巧、学习曲线平滑的Backbone.js
-* CSS: SASS & Compass。由于SASS框架上有Compass的支持，所以我在选择CSS框架时不会有其他的想法。
-* Automation: Grunt。虽然现在Gulp很火，但是由于yeoman的主要generator还是用的Grunt，所以最我们还是选了Grunt。
-* Dependency Manager: Require.js。有了一个Dependency Manager可以比较方便的看到依赖的情况，但是也给重构带来了一定的阻碍。
-* Test: jasmine。选择jasmine也是因为团队比较熟悉，出来的时间比较长。
+* JS MVC Framework: 负责与API交互，并动态选软页面。
+* CSS Framework: 帮助我们快速搭建网站，并且很好的管理CSS代码。
+* Automation Framework: 自动化的打包、压缩代码，启动开发环境，运行测试。
+* Dependency Manager: 管理各种依赖，包括我们自身代码的以及第三方库的。
+* Test Framework: 可以与Automation Framework方便的集成，运行我们的测试代码，并且可以方便的mock API。
 
-### 我们的问题和优化
+#### JS MVC Framework
 
-每个技术都有自身的一些问题，下面就是基于我们已有的选型和问题，所做的一些优化。也有一些问题暂时无解……
+我们考虑的选项有：[Backbone.js](http://backbonejs.org/)，[Angular.js](http://angularjs.org/)。其他还有更多的选项可以在[TodoMVC](http://todomvc.com/)找到，由于其他的框架都不是团队所熟悉的，所以我们不予考虑。
 
-#### Gruntfile模块化
+Backbone.js的特点是：
 
-在大型项目中用过Grunt的都知道，当自动化的配置和task多了一个，一个Gruntfile.js文件可能有好几百行，这样维护非常困难，于是对Gruntfile的模块化势在必行。感谢[墨磊](http://zhuanlan.zhihu.com/tla42)同学帮助我们做了模块化！以下内容都是他的实践。
+* 非常小巧，加上[Underscore.js](http://underscorejs.org/)也才11.5kb。
+* 学习曲线平滑，所有的代码加注释也只有1000多行，通过他自己的[Annotated Source](http://backbonejs.org/docs/backbone.html)，半天就能看完所有的代码。他本身的概念也没有那么多，掌握好Event, Model, Collection, View四个概念就够了。
+* 兼容性好，由于没有太多特殊的功能，所以他可以兼容更多的浏览器。
+* 项目越大越复杂会导致代码越难维护。由于Backbone.js中的View做了非常多的事情，包括绑定数据、绑定交互事件、与Model交互、管理sub view等等，所以往往view会越来越膨胀；同时因为Backbone.js的简单，意味着我们自己要写更多的代码，越大的项目中Backbone.js与Angular.js的差距越大。
 
-本质上Gruntfile.js就是一个node.js代码文件，所以我们可以很方便的用[CommonJS](http://www.commonjs.org)的规范将Gruntfile.js模块化。下面我们首先来看看模块化以后的grunt目录结构：
+Angular.js的特点是：
 
-	Gruntfile.js
-	grunt/
-		compile/
-			compass.js
-			concat.js
-			uglify.js
-			...
-		dev/
-			jshint.js
-			connect.js
-			...
-		config.js
-		tasks.js
+* 从2009年就已经诞生，发展到现在功能和社区都非常强大，已经形成了一套从开发理念、配套工具到各种第三方工具都比较完善的生态圈。
+* 由于功能强大和独特的开发理念，导致学习曲线非常陡峭。我们需要掌握他的DI, scope, directive等等各种概念，其中特别是由于自有directive导致的scope问题往往让熟手都摸不着头脑。
+* 文件比较大，minify以后还是有100多kb。
+* 基本不支持IE6, IE7.
 
-Gruntfile.js所做的事情就很简单了，只是加载tasks.js：
+综上所述，Backbone.js比较适合兼容性要求比较高的中小型项目，而Angular.js比较适合全站Single Page Application的大型项目，同时兼容性要求不高。最后我们选择了Backbone.js。
 
-	'use strict';
-	
-	module.exports = function (grunt) {
-		// load tasks
-		require('./grunt/tasks.js')(grunt);
-	};
+#### CSS Framework
 
-tasks.js负责加载和注册所有的tasks和config.js：
+我们考虑的选项有：[SASS](http://sass-lang.com/)，[LESS](http://lesscss.org/)。其他的选择还有[Stylus](http://learnboost.github.io/stylus/)。
 
-	module.exports = function (grunt) {
-	
-		require('./config.js')(grunt);
-	
-		grunt.loadTasks('./grunt/compile');
-		grunt.loadTasks('./grunt/dev');
-		
-		grunt.registerTask('some tasks', function () {
-			//...
-		});
-		
-		return grunt;
-	};
+总的来说这两者本身没有太大区别，虽然LESS号称更加简单，但SASS也没有复杂难用多少，而LESS也具有了所有的关键功能。重要的区别在于SASS有Compass这个工具，可以解决不同浏览器的某些CSS写法不同的问题，可以帮助我们生成Sprites（可以参考我的[这篇博客](http://www.zation.me/2013/01/13/sass_compass_best_practices_3.html)）。
 
-**注意：**这里`grunt.loadTasks()`方法的路径是相对于Gruntfile.js的。
+由于SASS有更好的社区支持（[Compass](http://compass-style.org/), [Gravity](https://github.com/owainlewis/gravity), and [Susy](])），所以我们最后选择了SASS。
 
-config.js负责配置项目相关的属性：
+#### Automation
 
-	module.exports = function (grunt) {
-		grunt.initConfig({
-			// configurable paths
-			server: {
-				hostname: '0.0.0.0',
-				hostport: '9000'
-			},
-			testServer: {
-				hostname: 'localhost',
-				hostport: '9001'
-			},
-			yeoman: {
-				app: 'app',
-				dist: 'dist',
-				test: 'test',
-				tmp: '.tmp'
-			}
-		});
-		
-		return grunt;
-	};
+这里我们只有一个考虑，就是Grunt，当然还有其他选择，比如[Gulp](http://gulpjs.com/)，但是由于Yeoman的主要generator还是使用的Grunt，并且使用新工具也有一定的熟悉时间和风险，所以我们最终还是选择了Yeoman + Grunt。
 
-compile文件夹下的tasks是在build production package的时候用到的，dev文件夹下的tasks是在开发环境中用到的，这里也可以根据项目的实际情况进行分类。
+#### Dependency Manager
 
-这里我认为还可以做优化的地方在于：
+前端第三方插件的管理工具现在除了[bower](http://bower.io/)，我不知道有其他的选择了。
 
-* 使用.json配置文件代替.js配置文件，并且预先设订好对于不同环境的配置文件，例如：config.json.development, config.json.production, config.json.staging, config.json.test... 不同的环境中就使用不同的配置文件，这样让所有的配置文件都可以做版本管理，而且也更加统一。
-* 使用npm将这些配置代码都打包，放到另一个独立的github repo中，这样可以简化项目结构和代码，同时也利于这些代码在其他项目中的共用。
+对于自身代码的依赖管理工具，并不是选择哪一个框架的问题，基本都是选择[require.js](http://requirejs.org/)，问题在于要不要用这个工具。由于Backbone.js并没有提供模块化和依赖管理的功能，所以我们还是尝试了使用require.js来管理自身依赖，但是实际情况是我们只把require.js用作一个打包代码的工具，而不是加载代码的工具，同时在修改文件名称或路径的时候非常麻烦，因为require.js的依赖是由文件的路径和名称确定的。解决这个问题的方式是使用模块名来定义模块，例如：
 
-这些优化我已经在新的项目中进行过尝试了，效果挺不错的，后面会写一篇更加详细的文章来进行介绍。
+    //Explicitly defines the "foo/title" module:
+    define("foo/title",
+        ["my/cart", "my/inventory"],
+        function(cart, inventory) {
+            //Define foo/title object in here.
+       }
+    );
 
-#### Requirejs的鸡肋
+这样不管如何移动或重命名文件都不会有问题了。
 
-#### i18n
+#### Test Framework
 
-#### Font Icon
+我们考虑的选项有：[Jasmine](http://jasmine.github.io/)，[Mocha](http://visionmedia.github.io/mocha/) + [Chai](http://chaijs.com/) + [Sinon](http://sinonjs.org/)。
+
+关于Jasmine和Mocha的优缺点，曾经在Yeoman从Jasmine切换到Mocha的时候引发过[讨论](https://github.com/yeoman/yeoman/issues/117)，包括：
+
+* String diffs
+* Test coverage reporting
+* Simpler async test interface
+* ……
+
+所以最终我们的选择是Mocha + Chai + Sinon。
+
+在这些选型完成以后，我们还遇到了不少问题，有一些解决了，成为了项目的亮点，有一些没有解决，就变成了项目天坑的一部分。后面我们会逐个介绍我们遇到的问题和优化，希望对别人能够有所帮助。
+
