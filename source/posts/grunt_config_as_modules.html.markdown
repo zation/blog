@@ -5,7 +5,7 @@ date: 2014-06-09 23:31 +08:00
 tags: Grunt
 ---
 
-在大型项目中用过Grunt的都知道，当自动化的配置和task多了一个，一个Gruntfile.js文件可能有好几百行，这样维护非常困难，于是对Gruntfile的模块化势在必行。感谢[墨磊](http://zhuanlan.zhihu.com/tla42)同学帮助我们做了模块化！以下内容都是他的实践。
+在大型项目中用过Grunt的都知道，当自动化的配置和task多了一个，一个Gruntfile.js文件可能有好几百行，这样维护非常困难，于是对Gruntfile的模块化势在必行。感谢[墨磊](http://zhuanlan.zhihu.com/tla42)同学帮助我们做了模块化！以下内容都是他的实践。#READMORE#
 
 本质上Gruntfile.js就是一个node.js代码文件，所以我们可以很方便的用[CommonJS](http://www.commonjs.org)的规范将Gruntfile.js模块化。下面我们首先来看看模块化以后的grunt目录结构：
 
