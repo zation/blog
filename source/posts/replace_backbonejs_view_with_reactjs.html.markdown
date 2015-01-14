@@ -108,6 +108,11 @@ Compnent这个概念的出现，就是为了使得页面组件可以更加容易
 ###总结
 有了Virtual DOM，JSX（合并Template与View），Component这三大利器，React.js现在已经成为了Template和View这一层的不二框架了。再加上它本身的轻量级，还有Facebook来维护，采用它的风险可以说非常低。由于以上种种原因，是的一个两年不到的项目，在Github上有了13,120的Star数量，社区也提供了相当的热情
 
+###一些资料
+下面是一些关于React.js的资料：
 
+* [Pete Hunt - The Secrets of React's Virtual DOM](https://www.youtube.com/watch?v=-DX3vJiqxm4)
+* [Why is React's concept of Virtual DOM said to be more performant than dirty model checking?](http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode)
+* [React’s diff algorithm](http://calendar.perfplanet.com/2013/diff/)
 
 
