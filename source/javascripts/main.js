@@ -4,9 +4,7 @@
 $(function() {
   $('.article-content a').attr('target', '_blank');
 
-  $('.article-content code, .article-content pre').addClass('prettyprint');
-  $('.article-content pre').addClass('linenums');
-  prettyPrint();
+  hljs.initHighlightingOnLoad();
 
   if ($('.about').length > 0) {
     $('.about-link').addClass('active');
