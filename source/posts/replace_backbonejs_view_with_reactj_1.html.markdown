@@ -1,9 +1,9 @@
-—
+---
 title: 用React.js替换Backbone.js的View（一）
 subtitle: Backbone.js View的陷阱以及React.js的优点
 date: 2015-01-13 22:25 +08:00
 tags: Javascript, Backbone.js, React.js
-—
+---
 
 最近终于找到时间，学习了一下Facebook出品的[React.js](http://facebook.github.io/react/)，发现虽然没有很深的体会到性能上的好处，但是这种编程方式带来的好处确实是很大的。这里我准备跟Backbone.js的View做一下对比，同时下一篇文章中提供一个示例说明一下如何用React.js替换Backbone.js的View。#READMORE#
 
