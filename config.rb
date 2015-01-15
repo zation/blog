@@ -6,6 +6,8 @@
 
 Time::DATE_FORMATS[:my_format] = "%Y. %m. %d"
 
+activate :syntax
+
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"
@@ -63,6 +65,7 @@ end
 # end
 
 set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks => true, :smartypants => true
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
