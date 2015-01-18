@@ -30,11 +30,13 @@ $ bower install --save react
 
 这里我们实际上是做的一个重构（虽然没有测试），为了尽量使得每一步都比较容易验证，我们每次commit的修改都会尽量很小，而且每次commit的代码都要保证是工作的，不会破坏原有的功能。所以我们会在原有的代码的基础上增加React.js的代码，完成一部分再删除一部分Backbone.js View的代码，最后再完成整个替换。
 
-我们首先需要添加一个TodoItem Component来作为Backbone.js TodoItem View的替换。我们之前提到过，React.js的Component其实就是View + Template的结合。那么我们应该怎样来划分Component呢？这里React.js官方给出的意见是：遵从[单一职责的原则](http://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是一个Component只做一件事。具体如何划分就要看你的Domain和团队自己的规则了。
+一般来说我推荐先替换Template，再替换DOM事件的绑定和处理，最后再整体用某个Component替换掉Backbone.js View。下面我会用TodoItem View替换过程的开始部分作为示例，讲解一下如何重构，同时也讲解一些React.js的基本概念。
 
 ###Template
 
-新建`todo-item.jsx`文件，将之前template中的内容挪过来，并且用React.js的方式来render：
+我们之前提到过，React.js的Component其实就是View + Template的结合。那么我们应该怎样来划分Component呢？这里React.js官方给出的意见是：遵从[单一职责的原则](http://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是一个Component只做一件事。具体如何划分就要看你的Domain和团队自己的规则了。
+
+现在我们新建TodoItem Component，新建`todo-item.jsx`文件，将原来template中的内容挪过来，并且用React.js的方式来render：
 
 ```javascript
 var app = app || {};
@@ -302,7 +304,10 @@ initialize: function () {
 然后我们可以全文搜索一下替换后的事件监听，只剩下一个：
 
 ```javascript
+//app.js
+...
 app.todos.on('all', render);
+...
 ```
 
 也就是说，不管数据如何变化，不管哪些数据变化了，我都直接拿我关心的数据来render就完了。由于Virtual DOM帮我做了增量式的DOM修改，这一部分就不用我来操心了，那么之前的一大堆事件监听以及相应的事件处理回调都可以省略了，这样代码逻辑的复杂度会降低很多，可维护和可读性会提高很多，同时也没有性能的担忧。React.js真是处理Tempate和View的一大神器啊！
