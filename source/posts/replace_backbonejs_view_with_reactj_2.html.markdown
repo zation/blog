@@ -30,11 +30,9 @@ $ bower install --save react
 
 这里我们实际上是做的一个重构（虽然没有测试），为了尽量使得每一步都比较容易验证，我们每次commit的修改都会尽量很小，而且每次commit的代码都要保证是工作的，不会破坏原有的功能。所以我们会在原有的代码的基础上增加React.js的代码，完成一部分再删除一部分Backbone.js View的代码，最后再完成整个替换。
 
-###1. TodoItem Component
-
 我们首先需要添加一个TodoItem Component来作为Backbone.js TodoItem View的替换。我们之前提到过，React.js的Component其实就是View + Template的结合。那么我们应该怎样来划分Component呢？这里React.js官方给出的意见是：遵从[单一职责的原则](http://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是一个Component只做一件事。具体如何划分就要看你的Domain和团队自己的规则了。
 
-####1.1 替换Template
+###Template
 
 新建`todo-item.jsx`文件，将之前template中的内容挪过来，并且用React.js的方式来render：
 
@@ -130,9 +128,9 @@ var app = app || {};
 
 到这里，替换就告一段落了。这个时候我们可以看到原有的功能都是可工作的，现在就可以做一个提交了。
 
-####1.2 替换DOM事件
+###DOM事件
 
-下面我们开始把DOM事件的处理挪到`todo-item.jsx`中，并且以React.js的方式来做。
+下面我们开始把DOM事件的处理挪到`todo-item.jsx`中，并且以React.js的方式来做。以toggle为例：
 
 ```diff
 index js/components/todo-item.jsx
@@ -219,7 +217,59 @@ index js/views/todo-view.js
 
 ^ 注意：props和state的默认值，都会被父Component传过来的默认值覆盖。
 
+###DOM操作
 
+在View这一层，我们常常会有针对某个Element进行操作的需求，以前我们可能会通过Class、ID或Tag来获取到这个Element，然后调用DOM方法来操作它。而React.js提供了`refs`来完成这个功能：
+
+```diff
+index js/components/todo-item.jsx
+@@ -18,6 +18,11 @@
+            });
+        },
+ 
++       // Switch this view into `"editing"` mode, displaying the input field.
++       edit: function () {
++           this.refs.editInput.getDOMNode().focus();
++       },
++
+        render: function() {
+            var todoData = this.props.todo.toJSON();
+            return (
+@@ -27,10 +32,10 @@
+                            type="checkbox"
+                            checked={this.state.completed}
+                            onChange={this.toggleCompleted}/>
+-                       <label>{todoData.title}</label>
++                       <label onDoubleClick={this.edit}>{todoData.title}</label>
+                        <button className="destroy"></button>
+                    </div>
+-                   <input className="edit" defaultValue={todoData.title} />
++                   <input ref="editInput" className="edit" defaultValue={todoData.title} />
+                </div>
+            );
+        }
+```
+
+```diff
+index js/views/todo-view.js
+@@ -66,7 +66,6 @@
+        // Switch this view into `"editing"` mode, displaying the input field.
+        edit: function () {
+            this.$el.addClass('editing');
+-           this.$input.focus();
+        },
+ 
+        // Close the `"editing"` mode, saving changes to the todo.
+```
+
+这里之所以React.js专门提供了refs，而没有推荐使用传统方式，我觉得是因为：
+
+1. 避免多余的class或ID，这样我们可以将class只用于样式上，将ID只用于form中，让他们的使用更加符合原始的设计；
+2. refs返回的其实不单是DOM对象，而是一个称为“backing instance”的东西，这个我没有查到具体含义是什么，猜测应该是React.js中Virtual DOM中的实例。
+
+###总结
+
+此间省略N步，我们得到了最后的[重构成果](https://github.com/zation/backbone-to-react)，如果希望看中间过程的，可以查看中间的commit diff。
 
 
 
