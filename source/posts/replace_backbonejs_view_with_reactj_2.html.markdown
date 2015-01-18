@@ -271,6 +271,46 @@ index js/views/todo-view.js
 
 此间省略N步，我们得到了最后的[重构成果](https://github.com/zation/backbone-to-react)，如果希望看中间过程的，可以查看中间的commit diff。
 
+在替换前后之间，我们可以比较一下监听事件的不同，首先来看看替换前我们监听了哪些事件：
+
+```javascript
+//todo-view.js
+...
+initialize: function () {
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo(this.model, 'visible', this.toggleVisible);
+}
+...
+```
+
+```javascript
+//app-view.js
+...
+initialize: function () {
+...
+    this.listenTo(app.todos, 'add', this.addOne);
+    this.listenTo(app.todos, 'reset', this.addAll);
+    this.listenTo(app.todos, 'change:completed', this.filterOne);
+    this.listenTo(app.todos, 'filter', this.filterAll);
+    this.listenTo(app.todos, 'all', this.render);
+...
+}
+...
+```
+
+然后我们可以全文搜索一下替换后的事件监听，只剩下一个：
+
+```javascript
+app.todos.on('all', render);
+```
+
+也就是说，不管数据如何变化，不管哪些数据变化了，我都直接拿我关心的数据来render就完了。由于Virtual DOM帮我做了增量式的DOM修改，这一部分就不用我来操心了，那么之前的一大堆事件监听以及相应的事件处理回调都可以省略了，这样代码逻辑的复杂度会降低很多，可维护和可读性会提高很多，同时也没有性能的担忧。React.js真是处理Tempate和View的一大神器啊！
+
+而且重构到最后我发现，如果不是因为Backbone.js的router依赖于jQuery，连jQuery我都可以直接删了。
+
+
+
 
 
 
