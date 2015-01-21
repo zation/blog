@@ -65,7 +65,7 @@ end
 # end
 
 set :markdown_engine, :redcarpet
-set :markdown, :fenced_code_blocks => true, :smartypants => true, :tables => true
+set :markdown, :fenced_code_blocks => true, :gh_blockcode => true, :smartypants => true, :tables => true
 
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
