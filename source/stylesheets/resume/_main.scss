@@ -74,6 +74,16 @@ $sub-color: #9DCCCD;
 }
 
 .resume {
+  .content {
+    a {
+      border-bottom: 1px dashed;
+
+      &:hover {
+        border-bottom: 0;
+      }
+    }
+  }
+
   .primary-enhance a,
   .primary-enhance {
     font-size: 24px;
