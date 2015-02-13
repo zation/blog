@@ -6,8 +6,6 @@
 
 Time::DATE_FORMATS[:my_format] = "%Y. %m. %d"
 
-activate :syntax
-
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"
