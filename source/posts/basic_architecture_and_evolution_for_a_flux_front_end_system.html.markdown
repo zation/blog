@@ -1,5 +1,5 @@
 ---
-title: 聊一聊一个基于Flux的前端系统
+title: 聊一聊基于Flux的前端系统
 subtitle: 基础架构以及演进
 date: 2015-04-09 22:46 +08:00
 tags: Javascript, React.js, Flux
