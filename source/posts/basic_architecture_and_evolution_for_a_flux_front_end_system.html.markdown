@@ -16,7 +16,7 @@ tags: Javascript, React.js, Flux
 
 ### 基础架构以及Why
 
-在这个项目中我们采用的基础架构是reflux.js + react.js + 一些小的liberay，例如：director.js，jquery.js，lodash.js。
+在这个项目中我们采用的基础架构是reflux.js + react.js + 一些小的library，例如：director.js，jquery.js，lodash.js。
 
 #### reflux.js
 选用reflux.js作为Flux的实现，是因为现在reflux.js是Github上最受欢迎的一个实现，并且提供了非常实际的便捷。它和Facebook Flux主要的不同在于：
@@ -60,11 +60,11 @@ var UserComponent = React.createClass({
 
 在我看来最大的好处就是，少写了很多代码，并且代码的可读性还挺好的。
 
-#### liberaies
+#### libraries
 
-在这个项目中我们选用了很多小而专的liberay，而不是选用一个大而全的framework（例如：Angular.js，Ember.js），是因为选用那样的framework风险比较大，替换成本很高，一旦出现了像Angular.js 2.0这样的升级，对团队来说比较痛苦。而选用小liberay的集合，要替换其中某一部分是很容易的。并且不会被framework的principle和DSL所绑架，比较好行程适用于自己项目domain的principle和DSL。
+在这个项目中我们选用了很多小而专的library，而不是选用一个大而全的framework（例如：Angular.js，Ember.js），是因为选用那样的framework风险比较大，替换成本很高，一旦出现了像Angular.js 2.0这样的升级，对团队来说比较痛苦。而选用小library的集合，要替换其中某一部分是很容易的。并且不会被framework的principle和DSL所绑架，比较好行程适用于自己项目domain的principle和DSL。
 
-下面来介绍一下我们用到的liberay：
+下面来介绍一下我们用到的libraries：
 
 * director.js是一个Server端和Client端通用的router工具。
 * jquery.js就不用介绍了。选这个主要是用来做来项目中的Ajax call、promise工具，原因也是被逼无奈，我们用到的很多插件都基于它，为了不增加额外的加载量，也就只有将就用它了。
@@ -72,7 +72,7 @@ var UserComponent = React.createClass({
 
 ### 架构的演进
 
-前面介绍了我们项目的基础架构，由于我们是用了各种小liberay，并且都是我们自己选的，那么就没有一个现成的架构来告诉我们这样架构的最佳实践是什么，一切都需要我们自己去探索和演进。下面我就来介绍一下项目各个部分的演进路线是什么样的，以及为什么会出现这样的演进。
+前面介绍了我们项目的基础架构，由于我们是用了各种小library，并且都是我们自己选的，那么就没有一个现成的架构来告诉我们这样架构的最佳实践是什么，一切都需要我们自己去探索和演进。下面我就来介绍一下项目各个部分的演进路线是什么样的，以及为什么会出现这样的演进。
 
 #### 页面render的lifecircle
 
@@ -417,11 +417,3 @@ var ExceptionStore = Reflux.createStore({
 对于数据缓存我们已经有了一些方向，例如：对于缓存的操作，是由Store来进行；对于是从缓存来读取数据，还是从API读取数据，是由Action来决定。但问题是如果要由Action来决定，那么Action又需要知道Store的状态，现在能想到的方法就是Store上有个 `getData` 的接口让Action来获取数据，然后Action就可以做判断了。不过我们希望可以有更好的方式，也许Action可以不用持有Store就可以完成这个判断？
 
 大家对于这两个问题有什么看法，欢迎大家在评论中与我讨论，也欢迎来信讨论，我的电子邮件是 <zation1@gmail.com>。谢谢！
-
-
-
-
-
-
-
-
