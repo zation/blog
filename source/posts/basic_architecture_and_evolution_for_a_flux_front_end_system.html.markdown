@@ -32,7 +32,7 @@ tags: Javascript, React.js, Flux
 var Reflux = require('reflux');
 var React = require('react');
 
-var UserAction = Reflux.createActions({
+var UserAction = Reflux.createAction({
     'login': {children: ['success', 'failed']}
 });
 
@@ -92,7 +92,7 @@ var router = new Router({
 然后我发现在很多时候我需要在程序中去控制页面跳转，例如：登录成功以后跳转到首页。于是我就在登录后用 `window.location.hash = '/'` 去做跳转。后来我发现程序中到处都是 `window.location.hash = 'xxx'`，到处修改这种全局变量不是一个好的实践，并且这样在未来做isomophic也会很难。于是我决定用Flux的方式来处理这一部分逻辑。很显然，这里的Store存储的是当前的route，Action所触发的是route的改变，于是我们增加了RouteStore和RouteAction：
 
 ```js
-var RouteAction = Reflux.createActions(['navigateTo']);
+var RouteAction = Reflux.createAction(['navigateTo']);
 
 var RouteStore = Reflux.createStore({
     listenables: RouteActions,
@@ -131,7 +131,7 @@ var router = new Router({
 同样，我希望把这种layout和page的render也用Flux的方式来进行管理。那么这里Store所存储的就是页面的component，Action所触发的就是页面component的改变，于是我增加了PageStore和PageAction，同时把各种layout放到PageComponent中管理：
 
 ```js
-var PageAction = Reflux.createActions(['render']);
+var PageAction = Reflux.createAction(['render']);
 
 var PageStore = Reflux.createStore({
     listenables: PageActions,
@@ -178,7 +178,7 @@ var router = new Router({
 最近我们还加上了一个需求，就是对于profile页面，只能让登录的用户进入，对于这种需求在这种架构下就很好添加了，只需要修改PageAction:
 
 ```js
-var PageAction = Reflux.createActions(['render', 'renderIfLogin']);
+var PageAction = Reflux.createAction(['render', 'renderIfLogin']);
 
 PageAction.renderIfLogin.preEmit = function(component, props) {
     if (userIsLogin) {
@@ -209,7 +209,7 @@ PageAction.renderIfLogin.preEmit = function(component, props) {
 这里用UsersStore和UsersAction作为示例。其实最开始的时候，它们是UserStore以及UserAction，因为系统中最开始只需要记录和操作当前登录的user：
 
 ```js
-var UserAction = Reflux.createActions({
+var UserAction = Reflux.createAction({
     asyncResult: true,
     children: ['login', 'register']
 });
@@ -236,7 +236,7 @@ var UserStore = Reflux.createStore({
 当时的UserStore非常简单，没有任何逻辑，只是把API返回的数据trigger给View就完了。但是当我们增加了显示当前所有user list的需求，我们就必须又增加一个UsersStore和UsersAction：
 
 ```js
-var UsersAction = Reflux.createActions({
+var UsersAction = Reflux.createAction({
     asyncResult: true,
     children: ['fetch']
 });
@@ -256,7 +256,7 @@ var UsersStore = Reflux.createStore({
 但是如果只是简单的这么写，就会有一个陷阱，因为UsersStore其实是包含了UserStore的，也就是说当前user的数据需要在两个地方维护；并且同样一个Domain，被分成了两个Action + 两个Store，也非常奇怪。基于以上两点，我决定针对同一个Domain，只会有一个Action和一个Store与之对应，这样概念上更好理解，并且不会出样同一份数据，要在两处维护的麻烦。于是UserAction和UserStore就被合并到了UsersAction和UsersStore中：
 
 ```js
-var UsersAction = Reflux.createActions({
+var UsersAction = Reflux.createAction({
     asyncResult: true,
     children: ['fetchAll', 'login', 'register']
 });
@@ -324,7 +324,7 @@ var UsersStore = Reflux.createStore({
 然后我们发现其实Store里面监听不同的Action所做的事情都是一样的，那么我们可以进一步简化：
 
 ```js
-var UsersAction = Reflux.createActions(['fetchAll', 'login', 'register', 'save']);
+var UsersAction = Reflux.createAction(['fetchAll', 'login', 'register', 'save']);
 
 UsersAction.fetchAll.listen(function(data) {
     $.get('/api/users', data).then(this.save);
@@ -378,7 +378,7 @@ var UsersStore = Reflux.createStore({
 看到这里好像还少了点什么？对，就是错误处理。很多时候我们需要显示Server端的错误，或者是当401的时候跳转到登录页面。针对这个我们的处理方式是有一个全局的ExceptionAction和ExceptionStore：
 
 ```js
-var ExceptionAction = Reflux.createActions(['serverError']);
+var ExceptionAction = Reflux.createAction(['serverError']);
 
 ExceptionAction.serverError.preEmit = function(error) {
     if (error.status === 401) {
