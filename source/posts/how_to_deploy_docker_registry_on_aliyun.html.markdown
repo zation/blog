@@ -32,9 +32,23 @@ Docker Registry主要有两种：公开的和私有的。最大的公开Registry
 
 ### 在阿里云上安装Docker
 
-由于我们的Registry会使用最新的2.0版本，所以安装的Docker也必须是最新的1.6版本，apt-get还是1.5，所以这里我们使用官方的脚本进行安装：`wget -qO- https://get.docker.com/ | sh`。
+由于我们的Registry会使用最新的2.0版本，所以安装的Docker也必须是最新的1.6版本，apt-get还是1.5，所以这里我们使用官方的脚本进行安装：
 
-安装完成以后你会发现，再启动Docker的时候有报错：`Could not find a free IP address range for xxx`。没错，这就是阿里云的坑，具体原因和解决方案可以参考[这里](http://hanjianwei.com/2014/07/30/docker-on-aliyun/)，简单来说的话就是：修改`/etc/network/interface`，去掉172那段的路由，然后运行`$ route del -net 172.16.0.0/12`。
+```bash
+wget -qO- https://get.docker.com/ | sh
+```
+
+安装完成以后你会发现，再启动Docker的时候有报错：
+
+```log
+Could not find a free IP address range for xxx
+```
+
+没错，这就是阿里云的坑，具体原因和解决方案可以参考[这里](http://hanjianwei.com/2014/07/30/docker-on-aliyun/)，简单来说的话就是：修改`/etc/network/interface`，去掉172那段的路由，然后运行
+
+```bash
+$ route del -net 172.16.0.0/12
+```
 
 现在运行`$ service docker start`就可以启动Docker了。
 
@@ -76,18 +90,55 @@ $ docker push 120.0.0.1:5000/hello-world:latest
 #### 对于开发环境（Windows，OSX）
 一般我们都使用了boot2docker，所以这里是基于boot2docker的配置。
 
-1. `$ boot2docker ssh` 进入到运行Docker的虚拟机中；
-2. `$ sudo vi /var/lib/boot2docker/profile` 添加配置  `DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"`，这里的`120.0.0.1:5000`就是你的Registry所在服务器的IP和端口号。如果你需要向多个Registry Push，或者从多个Registry Pull，那么你可以添加多个`insecure-registry`，例如：`DOCKER_OPTS="--insecure-registry 120.0.0.1:5000 --insecure-registry 120.0.0.2:5000"`
-3. `$ exit` 退出以后，重启Docker `$ boot2docker restart`
-4. 现在终于可以在本地环境build镜像，然后往我们搭建起来的Registry Push了。
+进入到运行Docker的虚拟机中
+
+```bash
+$ boot2docker ssh
+```
+
+修改Docker启动配置文件
+
+```bash
+$ sudo vi /var/lib/boot2docker/profile
+```
+
+添加配置
+> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"
+
+这里的`120.0.0.1:5000`就是你的Registry所在服务器的IP和端口号。如果你需要向多个Registry Push，或者从多个Registry Pull，那么你可以添加多个`insecure-registry`，例如：
+
+> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000 --insecure-registry 120.0.0.2:5000"
+
+退出Docker虚拟机后重启Docker
+
+```bash
+$ boot2docker restart
+```
+
+现在终于可以在本地环境build镜像，然后往我们搭建起来的Registry Push了。
 
 #### 对于生产环境（Ubuntu，CentOS）
 跟开发环境差别不大，目的都是一样的，只是手段不同。
 
-1. ssh到我们需要部署镜像的生产服务器上
-2. `$ sudo vi /etc/default/docker` 添加 `DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"`
-3. `$ service docker restart`
-4. 现在可以在生产服务器上Pull放在我们私有Registry中的Image了。
+ssh到我们需要部署镜像的生产服务器上，修改Docker启动配置文件
+
+```bash
+$ sudo vi /etc/default/docker
+```
+
+添加配置
+
+> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"
+
+重启Docker
+
+```bash
+$ service docker restart
+```
+
+现在可以在生产服务器上Pull放在我们私有Registry中的Image了。
+
+### 总结
 
 到这里整个配置就完成了，我感觉最坑爹的地方在于，这个`insecure-registry`的配置其实是针对Pull这个操作的，但是Push也需要这个配置，而且这个配置在Push/Pull的时候不能指定，必须在启动Docker的时候指定，每次改了还得重启Docker……社区对于这个丧病的行为已经诸多意见了，例如这个issue：[--insecure-registry should be on "docker pull"](https://github.com/docker/docker/issues/8887)，但是目前为止Docker还没有修改。甚至有人还在这个issue里面贴出了更加丧病的work around，就是使用ssh tunnel：
 
@@ -96,4 +147,5 @@ $ docker pull host:5000/image #fails
 $ ssh -N -L 5000:host:5000 user@host
 $ docker pull localhost:5000/image #works
 ```
+
 希望Docker的后续版本可以更加方便的向私有Registry Pull和Push，或者是有更加方便的配置安全证书和安全认证的方式。
