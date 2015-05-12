@@ -103,11 +103,15 @@ $ sudo vi /var/lib/boot2docker/profile
 ```
 
 添加配置
-> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"
+```bash
+EXTRA_ARGS="--insecure-registry 120.0.0.1:5000"
+```
 
 这里的`120.0.0.1:5000`就是你的Registry所在服务器的IP和端口号。如果你需要向多个Registry Push，或者从多个Registry Pull，那么你可以添加多个`insecure-registry`，例如：
 
-> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000 --insecure-registry 120.0.0.2:5000"
+```bash
+EXTRA_ARGS="--insecure-registry 120.0.0.1:5000 --insecure-registry 120.0.0.2:5000"
+```
 
 退出Docker虚拟机后重启Docker
 
@@ -128,7 +132,9 @@ $ sudo vi /etc/default/docker
 
 添加配置
 
-> DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"
+```bash
+DOCKER_OPTS="--insecure-registry 120.0.0.1:5000"
+```
 
 重启Docker
 
